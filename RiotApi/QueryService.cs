@@ -82,7 +82,7 @@ namespace RiotApi
         public static async Task<List<JToken>> getSummonerMatchList(string region, string summonerId, int beginIndex, int endIndex)
         {
             List<JToken> summonerMatchList = new List<JToken>();
-            await httpQuery("/api/lol/{0}/v2.2/matchlist/by-summoner/{1}?beginIndex={2}&endIndex={3}", new string[] { region, summonerId, beginIndex.ToString(), endIndex.ToString() }).ContinueWith(task => {
+            await httpQuery("/api/lol/{0}/v2.2/matchlist/by-summoner/{1}?season=SEASON_2016&beginIndex={2}&endIndex={3}", new string[] { region, summonerId, beginIndex.ToString(), endIndex.ToString() }).ContinueWith(task => {
                 summonerMatchList = task.Result["matches"].ToList<JToken>();                
             });
             return summonerMatchList;
