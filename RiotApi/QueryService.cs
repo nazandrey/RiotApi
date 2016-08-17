@@ -23,7 +23,7 @@ namespace RiotApi
                 string response;
                 try
                 {
-                    response = await client.GetStringAsync(RIOT_API_SERVER + String.Format(query, argList) + "?api_key=" + RIOT_API_KEY);
+                    response = await client.GetStringAsync(RIOT_API_SERVER + String.Format(query, argList) + (query.IndexOf('?') > -1 ? "&" : "?") + "api_key=" + RIOT_API_KEY);
                 }
                 catch (HttpRequestException)
                 {
