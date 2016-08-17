@@ -88,6 +88,15 @@ namespace RiotApi
             return summonerMatchList;
         }
 
+        public static async Task<JObject> getMatchInfo(string region, string matchId)
+        {
+            JObject matchInfo = new JObject();
+            await httpQuery("/api/lol/{0}/v2.2/match/{1}", new string[] { region, matchId }).ContinueWith(task => {
+                matchInfo = task.Result;
+            });
+            return matchInfo;
+        }
+
         public static string Key { get { return RIOT_API_KEY; } }
         public static string Server { get { return RIOT_API_SERVER; } }
     }
